@@ -1,4 +1,6 @@
 
+const youtube = require('../support/page-object/youtube/trendingPage');
+
 describe('FInal Project', () => {
     it.skip('search video pada youtube.com', () => {
 
@@ -26,7 +28,7 @@ describe('FInal Project', () => {
             });   
     });
 
-    it('youtube search', () => {
+    it.skip('youtube search', () => {
         cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));
         cy.xpath(`//a[@id='endpoint'][@title='Trending']`).click();
         cy.xpath(`//yt-tab-shape[@role="tab"][4]`).click();
@@ -35,7 +37,16 @@ describe('FInal Project', () => {
         cy.xpath(`//div[@id='title'][@class='style-scope ytd-watch-metadata']`).should('be.visible');
     });
 
-    it('Filter sort by price High to Low items Chair with AmazonDotCom', () => {
+    it.skip('youtube search', () => {
+        cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));
+        youtube.goToTrending();
+        youtube.listMenuTrendingMovies();
+        cy.wait(5000);
+        youtube.goToTrendingMovies();
+        cy.xpath(`//div[@id='title'][@class='style-scope ytd-watch-metadata']`).should('be.visible');
+    });
+
+    it.skip('Filter sort by price High to Low items Chair with AmazonDotCom', () => {
         cy.visit(Cypress.env('BASE_URL_AMAZON'));
         cy.wait(5000);
         cy.xpath(`//input[@id='twotabsearchtextbox']`).type('chair');
@@ -48,15 +59,19 @@ describe('FInal Project', () => {
         cy.xpath(`//div[@id='corePriceDisplay_desktop_feature_div']//span[@class='a-price-whole']`).should('contain','39,480');
     });
 
-    it.skip('Order Ticket flight with AgodaDotCom', () => {
+    it('Order Ticket flight with AgodaDotCom', () => {
         cy.visit(Cypress.env(`BASE_URL_AGODA`));
+        // pilih tab pesawat
         cy.xpath(`//div[@id='Tabs-Container']//li[@id='tab-flight-tab']`).click();
+        // pilih awal keberangkatan
         cy.xpath(`//div[@class='AutocompleteSearch NewDesign'][1]`).click();
         cy.xpath(`//input[@id='flight-origin-search-input']`).type('jakarta');
         cy.xpath(`//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]`).click();
+        // pilih lokasi tujuan
         cy.xpath(`//div[@class='AutocompleteSearch NewDesign'][2]`).click();
         cy.xpath(`//input[@id='flight-destination-search-input']`).type('singapura');
         cy.xpath(`//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]`).click();
+
         //cy.xpath(`//div[@data-selenium='date-selector-title']`).click();
         // cy.get('#flight-departure > .Box-sc-kv6pi1-0').click();
         cy.get('#flight-departure > .Box-sc-kv6pi1-0 > .IconBox__child > .SearchBoxTextDescription > .SearchBoxTextDescription__title').click();
