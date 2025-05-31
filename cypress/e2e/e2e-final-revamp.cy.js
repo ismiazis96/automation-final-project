@@ -5,7 +5,12 @@ const youtube = require('../support/page-object/youtube/trendingPage');
 
 describe('FInal Project', () => {
 
-    it.skip('youtube search', () => {
+    beforeEach(() => {
+        cy.clearCookies();
+        cy.clearLocalStorage();
+    });
+
+    it('youtube search', () => {
         cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));
         youtube.goToTrending();
         youtube.listMenuTrendingMovies();
@@ -14,7 +19,7 @@ describe('FInal Project', () => {
         youtube.assertionPage();
     });
 
-    it.skip('Filter sort by price High to Low items Chair with AmazonDotCom', () => {
+    it('Filter sort by price High to Low items Chair with AmazonDotCom', () => {
         cy.visit(Cypress.env('BASE_URL_AMAZON'));
         cy.wait(5000);
         amazon.searchItems();
@@ -25,45 +30,29 @@ describe('FInal Project', () => {
     });
 
     it.skip('Order Ticket flight with AgodaDotCom', () => {
-        cy.visit(Cypress.env(`BASE_URL_AGODA`));
+        
+
+        // cy.visit(Cypress.env(`BASE_URL_AGODA`));
+        cy.visit('https://www.agoda.com/id-id/');
         agoda.tablist();
-        agoda.formBooking();
+        agoda.formBooking({});        
+        agoda.filterData();
+        cy.wait(5000);
+        agoda.selectFlight();
+        cy.wait(2000);        
+        agoda.contactInformation({});
         
-        //cy.xpath(`//div[@data-selenium='date-selector-title']`).click();
-        // cy.get('#flight-departure > .Box-sc-kv6pi1-0').click();
-        cy.get('#flight-departure > .Box-sc-kv6pi1-0 > .IconBox__child > .SearchBoxTextDescription > .SearchBoxTextDescription__title').click();
-        cy.wait(2000);
-        cy.xpath(`//div[@class='PriceSurgePicker-Day PriceSurgePicker-Day__Wide selected checkIn startDateOnly']`).click();
-        cy.xpath(`//button[@data-selenium="searchButton"]`).click();
-
-
-        // filter pilih maskapai
-        cy.contains('Tampilkan semua 20 maskapai').click();
-        cy.xpath(`//div[@data-component='flight-filter-item-airline']//label[@data-element-value='Malaysia Airlines']//input[@type='checkbox']`).check();
-
-        // pilih maskapai yang awal banget
-        cy.xpath(`//div[@data-testid="flight-infinite-scroll"]//div[@class='GridItem__GridItemStyled-sc-3btv1u-0 fXrNCt'][1]`).click();
-        cy.xpath(`//button[@data-component="flight-card-bookButton"]`).click();
-
-        // form user booking
-        cy.xpath(`//input[@id='contact.contactFirstName']`).type('Ismi');
-        cy.xpath(`//input[@id='contact.contactLastName']`).type('Azis');
-        cy.xpath(`//input[@id='contact.contactEmail']`).type('ismiazis@mail.com');
-        cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type('88811112323');
-        cy.xpath(`//div[@data-testid='flight.forms.i0.units.i0.passengerGender']//label[@data-testid='0']`).check();
-
-        // penumpang 1
-        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerFirstName']`).type('mahira ismi');
-        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerLastName']`).type('azis');
+        // form passenger
+        agoda.formPassenger({});
         
+        // lanjut add on
+        cy.get('[data-testid="kite-box"] > :nth-child(1) > .a5d86-bg-product-primary').click();
+        cy.wait(5000);
+        // cy.xpath(`//div[@data-testid="add-on-radio-select-TRIP_PROTECTION"]//div[@tabindex="0"]`).click();
+        cy.xpath(`//div[@data-testid="radio-button-option-no"]`).click();
+        cy.xpath(`//button[@data-testid="continue-to-payment-button"]`).click();
 
-
-
-
-
-
-
-
+        
 
     });
 

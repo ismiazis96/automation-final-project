@@ -22,3 +22,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     // failing the test
     return false
   })
+
+
+  // bisa pake ini
+  // await cy.on('uncaught:exception', (err, runnable) => {
+  //  return false; // Mengabaikan error khusus untuk tes ini
+  // });

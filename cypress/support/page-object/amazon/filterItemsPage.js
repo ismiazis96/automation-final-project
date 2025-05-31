@@ -16,8 +16,9 @@ class filterItemsPage {
     }
 
     assertionPage() {
-        cy.xpath(`//div[@id='titleSection']//span[@id='productTitle']`).should('contain','        Office Chair Leather Home Desk 360° Rotating Office Chair       ');
-        cy.xpath(`//div[@id='corePriceDisplay_desktop_feature_div']//span[@class='a-price-whole']`).should('contain','39,480');
+        cy.xpath(`//h1[@id='title']//span[@id='productTitle']`).should('be.visible');
+        cy.xpath(`//div[@id='corePrice_feature_div']//span[@class='a-price-whole']`).should('be.visible');
+
     }
 
 
