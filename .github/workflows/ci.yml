@@ -25,8 +25,8 @@ jobs:
             - name: Run Cypress tests and generate Mochawesome report
               run: npm run test:full
 
-            - name: Upload HTML Report Artifact
-              uses: actions/upload-artifact@v3
-              with:
-                  name: mochawesome-report
-                  path: cypress/reports/html
+            # - name: Upload HTML Report Artifact
+            #   uses: actions/upload-artifact@v3
+            #   with:
+            #       name: mochawesome-report
+            #       path: cypress/reports/html
