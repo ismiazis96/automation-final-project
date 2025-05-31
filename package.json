@@ -1,7 +1,46 @@
 {
+
+  "name": "Automation-final-project",
+
+  "version": "1.0.0",
+
+  "description": "",
+
+  "main": "index.js",
+
+  "scripts": {
+
+    "test": "cypress open",
+
+    "run": "cypress run"
+
+  },
+
   "dependencies": {
+
+    "-": "^0.0.1",
+
     "cypress": "^14.4.0",
+
+    "cypress-mochawesome-reporter": "^3.8.2",
+
     "cypress-xpath": "^2.0.1",
-    "dotenv": "^16.5.0"
+
+    "dotenv": "^16.5.0",
+
+    "save-dev": "^0.0.1-security"
+
+  },
+
+  "devDependencies": {
+
+    "mochawesome": "^7.1.3",
+
+    "mochawesome-merge": "^5.0.0",
+
+    "mochawesome-report-generator": "^6.2.0"
+
   }
+
 }
+
