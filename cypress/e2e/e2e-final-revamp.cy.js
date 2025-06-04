@@ -10,7 +10,7 @@ describe('FInal Project', () => {
         cy.clearLocalStorage();
     });
 
-    it('youtube search', () => {
+    it('youtube search Trending', () => {
         cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));
         youtube.goToTrending();
         youtube.listMenuTrendingMovies();
@@ -29,7 +29,7 @@ describe('FInal Project', () => {
         amazon.assertionPage();
     });
 
-    it.only('Order Ticket flight with AgodaDotCom', () => {
+    it('Order Ticket flight with AgodaDotCom', () => {
         
         cy.visit('https://www.agoda.com/id-id/');
         agoda.tablist();
@@ -42,14 +42,14 @@ describe('FInal Project', () => {
         // form passenger
         agoda.formPassenger({});    
         
-        // cy.get("body").then(($body) => {
-        //     if ($body.find('input[data-testid="flight.forms.i0.units.i0.passportNumber"]').length > 0){
-        //         agoda.formPassport({});
-        //     } else {
-        //         cy.log('Skip aja form passport')
-        //     }
+        cy.get("body").then(($body) => {
+            if ($body.find('input[data-testid="flight.forms.i0.units.i0.passportNumber"]').length > 0){
+                agoda.formPassport({});
+            } else {
+                cy.log('Skip aja form passport')
+            }
 
-        // });
+        });
         cy.wait(10000);
         // lanjut add on
         agoda.addOn();

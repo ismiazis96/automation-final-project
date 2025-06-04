@@ -113,7 +113,7 @@ class orderTicket{
     }
 
     pagePaymentAssertion() {
-        cy.xpath(`//div[@data-component='passenger-summary-list']//strong`).should('be.visible');
+        cy.xpath(`//div[@data-component='passenger-summary-list']//span[@data-component="name-container-name"]`).should('be.visible');
         cy.xpath(`//div[@data-component='flight-booking-itineraryHeader']//h5[1]`).should('be.visible');
         cy.xpath(`//div[@data-component='flight-booking-itineraryHeader']//h5[2]`).should('be.visible');
         cy.xpath(`//dd[@data-component='mob-flight-price-total-desc']//span`).should('be.visible');
