@@ -29,10 +29,8 @@ describe('FInal Project', () => {
         amazon.assertionPage();
     });
 
-    it.skip('Order Ticket flight with AgodaDotCom', () => {
+    it.only('Order Ticket flight with AgodaDotCom', () => {
         
-
-        // cy.visit(Cypress.env(`BASE_URL_AGODA`));
         cy.visit('https://www.agoda.com/id-id/');
         agoda.tablist();
         agoda.formBooking({});        
@@ -41,20 +39,26 @@ describe('FInal Project', () => {
         agoda.selectFlight();
         cy.wait(2000);        
         agoda.contactInformation({});
-        
         // form passenger
-        agoda.formPassenger({});
+        agoda.formPassenger({});    
         
-        // lanjut add on
-        cy.get('[data-testid="kite-box"] > :nth-child(1) > .a5d86-bg-product-primary').click();
-        cy.wait(5000);
-        // cy.xpath(`//div[@data-testid="add-on-radio-select-TRIP_PROTECTION"]//div[@tabindex="0"]`).click();
-        cy.xpath(`//div[@data-testid="radio-button-option-no"]`).click();
-        cy.xpath(`//button[@data-testid="continue-to-payment-button"]`).click();
+        // cy.get("body").then(($body) => {
+        //     if ($body.find('input[data-testid="flight.forms.i0.units.i0.passportNumber"]').length > 0){
+        //         agoda.formPassport({});
+        //     } else {
+        //         cy.log('Skip aja form passport')
+        //     }
 
+        // });
+        cy.wait(10000);
+        // lanjut add on
+        agoda.addOn();
+        cy.wait(10000);
+        agoda.pagePaymentAssertion();
         
 
     });
 
 
 });
+
