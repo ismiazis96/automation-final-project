@@ -10,7 +10,7 @@
 
   "scripts": {
 
-    "test:run": "cypress run --spec 'cypress/e2e/e2e-final-revamp.cy.js'",
+    "test:run": "cypress run --headed --spec 'cypress/e2e/e2e-final-revamp.cy.js'",
     "report:merge": "npx mochawesome-merge cypress/reports/*.json > mochawesome.json",
     "report:generate": "npx marge mochawesome.json --reportDir cypress/reports/html",
     "test:full": "npm run test:run && npm run report:merge && npm run report:generate"
