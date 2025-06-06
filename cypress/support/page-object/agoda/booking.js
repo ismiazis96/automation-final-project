@@ -1,22 +1,21 @@
-
+const element = require('../../element/bookingPage.json');
 
 class orderTicket{
     tablist() {
-        cy.xpath(`//div[@id='Tabs-Container']//li[@id='tab-flight-tab']`).click();
+        cy.xpath(`${element.pilihMenu.menu}`).click();
     }
 
     formBooking({
         tujuanAwal=Cypress.env('FLIGHT_ORIGIN'),
         tujuanAkhir=Cypress.env('FLIGHT_DESTINATION')
     }) {
-        cy.xpath(`//div[@class='AutocompleteSearch NewDesign'][1]`).click();
-        cy.xpath(`//input[@id='flight-origin-search-input']`).type(tujuanAwal);
-        cy.xpath(`//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]`).click();
-        cy.xpath(`//div[@class='AutocompleteSearch NewDesign'][2]`).click();
-        cy.xpath(`//input[@id='flight-destination-search-input']`).type(tujuanAkhir);
-        cy.xpath(`//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]`).click();
-        cy.xpath(`//div[@class='PriceSurgePicker-Day PriceSurgePicker-Day__Wide today']/following-sibling::div[1]`).click();
-        cy.xpath(`//button[@data-selenium="searchButton"]`).click();
+        
+        cy.xpath(`${element.booking.from}`).type(tujuanAwal);
+        cy.xpath(`${element.booking.selectFrom}`).click();
+        cy.xpath(`${element.booking.to}`).type(tujuanAkhir);
+        cy.xpath(`${element.booking.selectTo}`).click();
+        cy.xpath(`${element.booking.date}`).click();
+        cy.xpath(`${element.booking.buttonSearch}`).click();
 
         // wrap value untuk di pake lain tempat
         cy.wrap(
@@ -30,25 +29,20 @@ class orderTicket{
     }
 
     filterData() {
-        // filter pilih maskapai
-        cy.xpath(`//div[@data-testid="filter-container"]//button/span[starts-with(@label,"Tampilkan semua")]`).click();
-        cy.xpath(`//div[@data-component='flight-filter-item-airline']//label[@data-element-value='Batik Air (Malaysia)']//input[@type='checkbox']`).check();
-
-        // filter dulu berdasarkan yang paling awal keberangaktan
-        cy.xpath(`//div[@data-element-name="flight-sort"]`).click();
-        // cy.xpath(`//div[@data-testid="floater-container"]//li[@role="presentation"][4]`).click();
-        // cy.xpath(`//div[@data-testid="floater-container"]//li[4]`).click({ multiple: true })
-        cy.xpath(`//div[@data-testid="floater-container"]//li//p[contains(text(), "Waktu Keberangkatan")]`).click({ force: true });
-        cy.xpath(`//div[@data-element-name="flight-sort"]`).click();
+        cy.xpath(`${element.filter.showData}`).click();
+        cy.xpath(`${element.filter.checkMaskapai}`).check();
+        cy.xpath(`${element.filter.clickSort}`).click();
+        cy.xpath(`${element.filter.selectSort}`).click({ force: true });
+        cy.xpath(`${element.filter.clickSort}`).click();
     }
 
     selectFlight() {
-        cy.get('[data-testid="flightCard-flight-detail"]')
-			.closest('[data-testid="flightCard-flight-detail"]')
+        cy.get(element.selectFlight.selectFlight)
+			.closest(element.selectFlight.selectFlight)
 			.as("penerbanganDipilih");
 
 		cy.get("@penerbanganDipilih").first().click();
-        cy.xpath(`//button[@data-component="flight-card-bookButton"]`).click({ multiple: true });
+        cy.xpath(`${element.selectFlight.btnFlight}`).click({ multiple: true });
     }
 
     contactInformation({
@@ -57,10 +51,10 @@ class orderTicket{
         email=Cypress.env('contactEmail'),
         phoneNumber=Cypress.env('contactPhoneNumber')
     }) {
-        cy.xpath(`//input[@id='contact.contactFirstName']`).type(firsname);
-        cy.xpath(`//input[@id='contact.contactLastName']`).type(lastname);
-        cy.xpath(`//input[@id='contact.contactEmail']`).type(email);
-        cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type(phoneNumber);
+        cy.xpath(`${element.contact.firstname}`).type(firsname);
+        cy.xpath(`${element.contact.lastname}`).type(lastname);
+        cy.xpath(`${element.contact.email}`).type(email);
+        cy.xpath(`${element.contact.phone}`).type(phoneNumber);
     }
 
     formPassenger({
@@ -82,21 +76,21 @@ class orderTicket{
             }
         });
         
-        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerFirstName']`).type(passengerFirstname);
-        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerLastName']`).type(passengerLastname);
+        cy.xpath(`${element.passenger.firsname}`).type(passengerFirstname);
+        cy.xpath(`${element.passenger.lastname}`).type(passengerLastname);
 
         // wrap as full name
       cy.wrap(
         `${passengerFirstname} ${passengerLastname}`
       ).as("fullName");
       
-        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-DateInputDataTestId']`).type(passengerDate);
-        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]`).click();
+        cy.xpath(`${element.passenger.date}`).type(passengerDate);
+        cy.xpath(`${element.passenger.btnMonth}`).click();
         cy.xpath(`//div[@data-testid="floater-container"]//span[contains(text(), '${passengerMonth}')]`).click()
-        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-YearInputDataTestId']`).type(PassengerYears);
-        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerNationality"]`).click();
-        cy.xpath(`//input[@placeholder="Cari"]`).type(passengerNationality);
-        cy.xpath(`//ul[@role='listbox']`).click();
+        cy.xpath(`${element.passenger.years}`).type(PassengerYears);
+        cy.xpath(`${element.passenger.btnNationality}`).click();
+        cy.xpath(`${element.passenger.typeNationality}`).type(passengerNationality);
+        cy.xpath(`${element.passenger.selectNationality}`).click();
 
         
 
