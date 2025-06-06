@@ -14,30 +14,30 @@ describe('FInal Project', () => {
         cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));
         youtube.goToTrending();
         youtube.listMenuTrendingMovies();
-        cy.wait(5000);
+        // cy.wait(5000);
         youtube.goToTrendingMovies();
         youtube.assertionPage();
     });
 
     it('Filter sort by price High to Low items Chair with AmazonDotCom', () => {
         cy.visit(Cypress.env('BASE_URL_AMAZON'));
-        cy.wait(5000);
+        // cy.wait(5000);
         amazon.searchItems();
-        cy.wait(5000);
+        // cy.wait(5000);
         amazon.sortFeatureItems();
         amazon.selectItems();
         amazon.assertionPage();
     });
 
-    it.only('Order Ticket flight with AgodaDotCom', () => {
+    it('Order Ticket flight with AgodaDotCom', () => {
         
         cy.visit('https://www.agoda.com/id-id/');
         agoda.tablist();
         agoda.formBooking({});        
         agoda.filterData();
-        cy.wait(5000);
+        // cy.wait(5000);
         agoda.selectFlight();
-        cy.wait(2000);        
+        // cy.wait(2000);        
         agoda.contactInformation({});
         // form passenger
         agoda.formPassenger({});    
@@ -50,7 +50,7 @@ describe('FInal Project', () => {
             }
 
         });
-        cy.wait(10000);
+        // cy.wait(10000);
         // lanjut add on
         agoda.addOn();
 

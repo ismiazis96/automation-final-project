@@ -1,0 +1,47 @@
+{
+    "pilihMenu": {
+        "menu": "//div[@id='Tabs-Container']//li[@id='tab-flight-tab']"      
+    },
+
+    "booking":  {
+        "from"      : "//input[@id='flight-origin-search-input']",
+        "selectFrom":"//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]",
+        "to"        : "//input[@id='flight-destination-search-input']",
+        "selectTo"  :"//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]",
+        "date"      :"//div[@class='PriceSurgePicker-Day PriceSurgePicker-Day__Wide today']/following-sibling::div[1]",
+        "buttonSearch":"//button[@data-selenium='searchButton']"
+    },
+
+    "filter": {
+        "showData"      : "//div[@data-testid='filter-container']//button/span[starts-with(@label,'Tampilkan semua')]",
+        "checkMaskapai" : "//div[@data-component='flight-filter-item-airline']//label[@data-element-value='Batik Air (Malaysia)']//input[@type='checkbox']",
+        "clickSort"     : "//div[@data-element-name='flight-sort']",
+        "selectSort"    : "//div[@data-testid='floater-container']//li//p[contains(text(), 'Waktu Keberangkatan')]"
+    },
+
+    "selectFlight": {
+        "selectFlight"  : "[data-testid='flightCard-flight-detail']",
+        "btnFlight"     : "//button[@data-component='flight-card-bookButton']"
+    },
+
+    "contact": {
+        "firstname" : "//input[@id='contact.contactFirstName']",
+        "lastname"  : "//input[@id='contact.contactLastName']",
+        "email"     : "//input[@id='contact.contactEmail']",
+        "phone"     : "//input[@id='contact.contactPhoneNumber']"
+    },
+
+    "passenger": {
+        "firstname" : "//input[@id='flight.forms.i0.units.i0.passengerFirstName']",
+        "lastname"  : "//input[@id='flight.forms.i0.units.i0.passengerLastName']",
+        "date"      : "//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-DateInputDataTestId']",
+        "btnMonth"  : "//div[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId']",
+        "years"     : "//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-YearInputDataTestId']",
+        "btnNationality" : "//div[@data-testid='flight.forms.i0.units.i0.passengerNationality']",
+        "typeNationality": "//input[@placeholder='Cari']",
+        "selectNationality": "//ul[@role='listbox']" 
+    }
+
+
+
+}
