@@ -29,7 +29,7 @@ describe('FInal Project', () => {
         amazon.assertionPage();
     });
 
-    it('Order Ticket flight with AgodaDotCom', () => {
+    it.only('Order Ticket flight with AgodaDotCom', () => {
         
         cy.visit('https://www.agoda.com/id-id/');
         agoda.tablist();
@@ -53,7 +53,26 @@ describe('FInal Project', () => {
         cy.wait(10000);
         // lanjut add on
         agoda.addOn();
-        cy.wait(10000);
+
+        // cek dulu apa ada element pop up
+        cy.get('body').then(($body) => {
+            const xpath = "//button[@aria-label='close']";
+            const result = document.evaluate(
+              xpath,
+              $body[0],
+              null,
+              XPathResult.FIRST_ORDERED_NODE_TYPE,
+              null
+            );
+            const closeBtn = result.singleNodeValue;
+          
+            if (closeBtn) {
+              cy.wrap(closeBtn).click(); // klik kalau ada
+            } else {
+              cy.log('Tidak ada tombol close, lanjutkan saja');
+            }
+          });
+        // cy.wait(10000);
         agoda.pagePaymentAssertion();
         
 
