@@ -1,5 +1,5 @@
 
-const agoda = require('../support/page-object/agoda/orderTicketsPage');
+const agoda = require('../support/page-object/agoda/booking');
 const amazon = require('../support/page-object/amazon/filterItemsPage');
 const youtube = require('../support/page-object/youtube/trendingPage');
 
@@ -29,9 +29,10 @@ describe('FInal Project', () => {
         amazon.assertionPage();
     });
 
-    it('Order Ticket flight with AgodaDotCom', () => {
+    it.only('Order Ticket flight with AgodaDotCom', () => {
         
-        cy.visit('https://www.agoda.com/id-id/');
+        // cy.visit('https://www.agoda.com/id-id/');
+        cy.visit(Cypress.env('BASE_URL_AGODA'));
         agoda.tablist();
         agoda.formBooking({});        
         agoda.filterData();
