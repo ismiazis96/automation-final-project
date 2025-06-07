@@ -9,6 +9,7 @@
         "to"        : "//input[@id='flight-destination-search-input']",
         "selectTo"  :"//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]",
         "date"      :"//div[@class='PriceSurgePicker-Day PriceSurgePicker-Day__Wide today']/following-sibling::div[1]",
+        "dateWeekend": "//div[@class='PriceSurgePicker-Day PriceSurgePicker-Day__Wide weekends today']/following-sibling::div[1]",
         "buttonSearch":"//button[@data-selenium='searchButton']"
     },
 
@@ -39,9 +40,34 @@
         "years"     : "//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-YearInputDataTestId']",
         "btnNationality" : "//div[@data-testid='flight.forms.i0.units.i0.passengerNationality']",
         "typeNationality": "//input[@placeholder='Cari']",
-        "selectNationality": "//ul[@role='listbox']" 
-    }
+        "selectNationality": "//ul[@role='listbox']",
+        "genderPria": "//div[@data-testid='flight.forms.i0.units.i0.passengerGender']//input[@aria-label='Pria' and @type='radio']",
+        "genderWanita": "//div[@data-testid='flight.forms.i0.units.i0.passengerGender']//input[@aria-label='Wanita' and @type='radio']"
+    },
 
+    "passport": {
+        "passportNumber" : "//input[@id='flight.forms.i0.units.i0.passportNumber']",
+        "passportCountry": "//div[@data-testid='flight.forms.i0.units.i0.passportCountryOfIssue']//button",
+        "typePassportCountry": "//input[@placeholder='Cari']",
+        "selectPassportCountry": "//ul[@role='listbox']",
+        "passportDate": "//input[@data-testid='flight.forms.i0.units.i0.passportExpiryDate-DateInputDataTestId']",
+        "btnPassportMonth": "//div[@data-testid='flight.forms.i0.units.i0.passportExpiryDate-MonthInputDataTestId']",
+        "selectPassportMonth": "//div[@data-testid='floater-container']//span[contains(text(),'${passportMonth}')]",
+        "passportYears": "//input[@datatestid='flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId']"
+    },
+
+    "addOn" : {
+        "continueToAddOnsButton": "//button[@data-component='flight-continue-to-addOns-button']",
+        "noAddOns": "//div[@role='radiogroup']//div[@data-testid='radio-button-option-no']",
+        "continueToPaymentButton": "//button[@data-testid='continue-to-payment-button']"
+    },
+
+    "assertPayment": {
+        "fullName": "//div[@data-component='passenger-summary-list']//strong[@data-component='name-container-name']",
+        "tujuanAwal": "//div[@data-component='flight-booking-itineraryHeader']//h5[1]",
+        "tujuanAkhir": "//div[@data-component='flight-booking-itineraryHeader']//h5[2]",
+        "price": "//dd[@data-component='mob-flight-price-total-desc']//span"
+    }
 
 
 }
