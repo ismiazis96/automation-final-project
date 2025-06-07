@@ -29,7 +29,7 @@ describe('FInal Project', () => {
         amazon.assertionPage();
     });
 
-    it.only('Order Ticket flight with AgodaDotCom', () => {
+    it('Order Ticket flight with AgodaDotCom', () => {
         
         // cy.visit('https://www.agoda.com/id-id/');
         cy.visit(Cypress.env('BASE_URL_AGODA'));
