@@ -73,7 +73,7 @@ describe('FInal Project', () => {
               cy.log('Tidak ada tombol close, lanjutkan saja');
             }
           });
-        // cy.wait(10000);
+        cy.wait(10000);
         agoda.pagePaymentAssertion();
         
 

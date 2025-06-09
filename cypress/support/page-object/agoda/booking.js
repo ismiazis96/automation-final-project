@@ -14,7 +14,7 @@ class orderTicket{
         cy.xpath(`${element.booking.selectFrom}`).click();
         cy.xpath(`${element.booking.to}`).type(tujuanAkhir);
         cy.xpath(`${element.booking.selectTo}`).click();
-        cy.xpath(`${element.booking.dateWeekend}`).click();
+        cy.xpath(`${element.booking.date}`).click();
         cy.xpath(`${element.booking.buttonSearch}`).click();
 
         // wrap value untuk di pake lain tempat

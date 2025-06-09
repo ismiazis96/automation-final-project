@@ -1,0 +1,590 @@
+{
+  "stats": {
+    "suites": 5,
+    "tests": 17,
+    "passes": 5,
+    "pending": 7,
+    "failures": 5,
+    "testsRegistered": 17,
+    "passPercent": 29.41176470588235,
+    "pendingPercent": 41.1764705882353,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-06-03T08:18:23.061Z",
+    "end": "2025-06-09T04:20:43.840Z",
+    "duration": 504140779
+  },
+  "results": [
+    {
+      "uuid": "70201498-72bb-452d-837f-8be8e2d2be1a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\e2e-final-project.cy.js",
+      "file": "cypress\\e2e\\e2e-final-project.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fbe440db-443c-4353-ae0b-cfff69953657",
+          "title": "FInal Project",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "search video pada youtube.com",
+              "fullTitle": "FInal Project search video pada youtube.com",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "// cy.visit('https://www.youtube.com');\ncy.visit(Cypress.env(`BASE_URL1`));\n// klik trending\ncy.get(':nth-child(4) > #items > :nth-child(1) > #endpoint > tp-yt-paper-item.style-scope > .title').click();\n// pilih movies\ncy.get('.yt-tab-shape-wiz__tab--last-tab > .yt-tab-shape-wiz__tab').click();\n// ambil trending yang no 3\ncy.contains('Jalan Pulang - Official Trailer').invoke('text').then(text => {\n  cy.log('Teks yang didapat:', text);\n  // expectTitle= text;\n  // cy.wrap(expectTitle).as(title);\n  cy.wrap(text).as('newTitle');\n});\ncy.contains('Jalan Pulang - Official Trailer').click();\ncy.get('@newTitle').then(title => {\n  // Ambil alias\n  cy.log(title); // Output: 'a'\n  cy.get('[title=\"Jalan Pulang - Official Trailer\"]').should('contain', title);\n});",
+              "err": {},
+              "uuid": "d0d465e8-0e13-4d33-b229-4a2da26beb90",
+              "parentUUID": "fbe440db-443c-4353-ae0b-cfff69953657",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "youtube search",
+              "fullTitle": "FInal Project youtube search",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));\ncy.xpath(`//a[@id='endpoint'][@title='Trending']`).click();\ncy.xpath(`//yt-tab-shape[@role=\"tab\"][4]`).click();\ncy.wait(5000);\ncy.xpath(`//ytd-video-renderer[@class='style-scope ytd-expanded-shelf-contents-renderer'][3]//a[@id='video-title']`).click();\ncy.xpath(`//div[@id='title'][@class='style-scope ytd-watch-metadata']`).should('be.visible');",
+              "err": {},
+              "uuid": "3867abe2-bd20-4af1-a5a1-775eebd35132",
+              "parentUUID": "fbe440db-443c-4353-ae0b-cfff69953657",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "youtube search",
+              "fullTitle": "FInal Project youtube search",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));\nyoutube.goToTrending();\nyoutube.listMenuTrendingMovies();\ncy.wait(5000);\nyoutube.goToTrendingMovies();\ncy.xpath(`//div[@id='title'][@class='style-scope ytd-watch-metadata']`).should('be.visible');",
+              "err": {},
+              "uuid": "42707479-8d44-461b-876d-6a42961924db",
+              "parentUUID": "fbe440db-443c-4353-ae0b-cfff69953657",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Filter sort by price High to Low items Chair with AmazonDotCom",
+              "fullTitle": "FInal Project Filter sort by price High to Low items Chair with AmazonDotCom",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.visit(Cypress.env('BASE_URL_AMAZON'));\ncy.wait(5000);\ncy.xpath(`//input[@id='twotabsearchtextbox']`).type('chair');\ncy.xpath(`//div[@class='nav-right']//input[@type='submit']`).click();\ncy.wait(5000);\ncy.get('#a-autoid-0-announce').click();\ncy.xpath(`//div[@id='a-popover-2']//li[3]`).click();\ncy.xpath(`//div[@class='s-main-slot s-result-list s-search-results sg-row']//div[@role='listitem'][5]`).click();\ncy.xpath(`//div[@id='titleSection']//span[@id='productTitle']`).should('contain', '        Office Chair Leather Home Desk 360° Rotating Office Chair       ');\ncy.xpath(`//div[@id='corePriceDisplay_desktop_feature_div']//span[@class='a-price-whole']`).should('contain', '39,480');",
+              "err": {},
+              "uuid": "a89a8bb6-4e70-432e-8c1d-21fc839d7d2a",
+              "parentUUID": "fbe440db-443c-4353-ae0b-cfff69953657",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Order Ticket flight with AgodaDotCom",
+              "fullTitle": "FInal Project Order Ticket flight with AgodaDotCom",
+              "timedOut": null,
+              "duration": 481,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env(`BASE_URL_AGODA`));\nagoda.tablist();\nagoda.formBooking();\n//cy.xpath(`//div[@data-selenium='date-selector-title']`).click();\n// cy.get('#flight-departure > .Box-sc-kv6pi1-0').click();\ncy.get('#flight-departure > .Box-sc-kv6pi1-0 > .IconBox__child > .SearchBoxTextDescription > .SearchBoxTextDescription__title').click();\ncy.wait(2000);\ncy.xpath(`//div[@class='PriceSurgePicker-Day PriceSurgePicker-Day__Wide selected checkIn startDateOnly']`).click();\ncy.xpath(`//button[@data-selenium=\"searchButton\"]`).click();\n// filter pilih maskapai\ncy.contains('Tampilkan semua 20 maskapai').click();\ncy.xpath(`//div[@data-component='flight-filter-item-airline']//label[@data-element-value='Malaysia Airlines']//input[@type='checkbox']`).check();\n// pilih maskapai yang awal banget\n// cy.xpath(`//div[@data-testid=\"flight-infinite-scroll\"]//div[@class='GridItem__GridItemStyled-sc-3btv1u-0 fXrNCt'][1]`).click();\n// cy.xpath(`//button[@data-component=\"flight-card-bookButton\"]`).click();\n// form user booking\n// cy.xpath(`//input[@id='contact.contactFirstName']`).type('Ismi');\n// cy.xpath(`//input[@id='contact.contactLastName']`).type('Azis');\n// cy.xpath(`//input[@id='contact.contactEmail']`).type('ismiazis@mail.com');\n// cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type('88811112323');\n// cy.xpath(`//div[@data-testid='flight.forms.i0.units.i0.passengerGender']//label[@data-testid='0']`).check();\n// penumpang 1\n// cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerFirstName']`).type('mahira ismi');\n// cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerLastName']`).type('azis');",
+              "err": {
+                "message": "ReferenceError: agoda is not defined",
+                "estack": "ReferenceError: agoda is not defined\n    at Context.eval (webpack://Automation-final-project/./cypress/e2e/e2e-final-project.cy.js:64:8)\n    at runnable.fn (http://localhost:62954/__cypress/runner/cypress_runner.js:141400:19)\n    at callFn (http://localhost:62954/__cypress/runner/cypress_runner.js:160478:21)\n    at Runnable.run (http://localhost:62954/__cypress/runner/cypress_runner.js:160465:7)\n    at <unknown> (http://localhost:62954/__cypress/runner/cypress_runner.js:166537:30)\n    at PassThroughHandlerContext.finallyHandler (http://localhost:62954/__cypress/runner/cypress_runner.js:4042:23)\n    at PassThroughHandlerContext.tryCatcher (http://localhost:62954/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:62954/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:62954/__cypress/runner/cypress_runner.js:1546:18)",
+                "diff": null
+              },
+              "uuid": "71161e60-2c1c-4800-82e3-409780940788",
+              "parentUUID": "fbe440db-443c-4353-ae0b-cfff69953657",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "71161e60-2c1c-4800-82e3-409780940788"
+          ],
+          "pending": [
+            "d0d465e8-0e13-4d33-b229-4a2da26beb90",
+            "3867abe2-bd20-4af1-a5a1-775eebd35132",
+            "42707479-8d44-461b-876d-6a42961924db",
+            "a89a8bb6-4e70-432e-8c1d-21fc839d7d2a"
+          ],
+          "skipped": [],
+          "duration": 481,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "4cdb902e-5b3a-4888-945f-2df69f96ab91",
+      "title": "",
+      "fullFile": "cypress\\e2e\\e2e-final-revamp.cy.js",
+      "file": "cypress\\e2e\\e2e-final-revamp.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3d675b26-5664-4030-9d59-a9c15649f047",
+          "title": "FInal Project",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "youtube search",
+              "fullTitle": "FInal Project youtube search",
+              "timedOut": null,
+              "duration": 24050,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));\nyoutube.goToTrending();\nyoutube.listMenuTrendingMovies();\ncy.wait(5000);\nyoutube.goToTrendingMovies();\nyoutube.assertionPage();",
+              "err": {
+                "message": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 2 elements. Pass `{ multiple: true }` if you want to serially click each element.\n\nhttps://on.cypress.io/click",
+                "estack": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 2 elements. Pass `{ multiple: true }` if you want to serially click each element.\n\nhttps://on.cypress.io/click\n    at mouseAction (https://www.youtube.com/__cypress/runner/cypress_runner.js:113607:68)\n    at Context.click (https://www.youtube.com/__cypress/runner/cypress_runner.js:113774:14)\n    at wrapped (https://www.youtube.com/__cypress/runner/cypress_runner.js:141133:19)\nFrom Your Spec Code:\n    at Object.proxyGetter [as get] (https://www.youtube.com/__cypress/runner/cypress_runner.js:79924:22)\n    at exists (https://www.youtube.com/__cypress/runner/cypress_runner.js:145988:26)\n    at elExists (https://www.youtube.com/__cypress/runner/cypress_runner.js:146003:10)\n    at ensureExistence (https://www.youtube.com/__cypress/runner/cypress_runner.js:146184:22)\n    at onFailFn (https://www.youtube.com/__cypress/runner/cypress_runner.js:146213:53)",
+                "diff": null
+              },
+              "uuid": "0741fae3-1610-45d0-a8b2-ad9286f138e6",
+              "parentUUID": "3d675b26-5664-4030-9d59-a9c15649f047",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Filter sort by price High to Low items Chair with AmazonDotCom",
+              "fullTitle": "FInal Project Filter sort by price High to Low items Chair with AmazonDotCom",
+              "timedOut": null,
+              "duration": 34751,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env('BASE_URL_AMAZON'));\ncy.wait(5000);\namazon.searchItems();\ncy.wait(5000);\namazon.sortFeatureItems();\namazon.selectItems();\namazon.assertionPage();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `//h1[@id='title']//span[@id='productTitle']`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `//h1[@id='title']//span[@id='productTitle']`, but never found it.\n    at filterItemsPage.assertionPage (webpack://Automation-final-project/./cypress/support/page-object/amazon/filterItemsPage.js:19:64)\n    at Context.eval (webpack://Automation-final-project/./cypress/e2e/e2e-final-revamp.cy.js:29:15)",
+                "diff": null
+              },
+              "uuid": "6df7dbbd-9b14-4337-898a-c8674aa78ef3",
+              "parentUUID": "3d675b26-5664-4030-9d59-a9c15649f047",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Order Ticket flight with AgodaDotCom",
+              "fullTitle": "FInal Project Order Ticket flight with AgodaDotCom",
+              "timedOut": null,
+              "duration": 86464,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// cy.visit(Cypress.env(`BASE_URL_AGODA`));\ncy.visit('https://www.agoda.com/id-id/');\nagoda.tablist();\nagoda.formBooking({});\nagoda.filterData();\ncy.wait(5000);\nagoda.selectFlight();\ncy.wait(2000);\nagoda.contactInformation({});\n// form passenger\nagoda.formPassenger({});\ncy.wait(10000);\n// lanjut add on\n// cy.get('[data-testid=\"kite-box\"] > :nth-child(1) > .a5d86-bg-product-primary').click();\ncy.xpath(`//button[@data-component=\"flight-continue-to-addOns-button\"]`).click();\ncy.wait(5000);\n// cy.xpath(`//div[@data-testid=\"add-on-radio-select-TRIP_PROTECTION\"]//div[@tabindex=\"0\"]`).click();\ncy.xpath(`//div[@data-testid=\"radio-button-option-no\"]`).click();\ncy.xpath(`//button[@data-testid=\"continue-to-payment-button\"]`).click();",
+              "err": {},
+              "uuid": "b4721b2d-c7bf-442b-99f3-cbead07d6acf",
+              "parentUUID": "3d675b26-5664-4030-9d59-a9c15649f047",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b4721b2d-c7bf-442b-99f3-cbead07d6acf"
+          ],
+          "failures": [
+            "0741fae3-1610-45d0-a8b2-ad9286f138e6",
+            "6df7dbbd-9b14-4337-898a-c8674aa78ef3"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 145265,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "29d5c672-3a96-494a-8ee9-be4ac8cab53e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\e2e-final-revamp.cy.js",
+      "file": "cypress\\e2e\\e2e-final-revamp.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0d834b28-7ee5-49ba-a57b-6c385d8945f6",
+          "title": "FInal Project",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "youtube search",
+              "fullTitle": "FInal Project youtube search",
+              "timedOut": null,
+              "duration": 60536,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));\nyoutube.goToTrending();\nyoutube.listMenuTrendingMovies();\ncy.wait(5000);\nyoutube.goToTrendingMovies();\nyoutube.assertionPage();",
+              "err": {
+                "message": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.",
+                "estack": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n    at timedOutWaitingForPageLoad (https://www.youtube.com/__cypress/runner/cypress_runner.js:133709:64)\n    at <unknown> (https://www.youtube.com/__cypress/runner/cypress_runner.js:134703:16)\n    at tryCatcher (https://www.youtube.com/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (https://www.youtube.com/__cypress/runner/cypress_runner.js:4156:41)\n    at tryCatcher (https://www.youtube.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://www.youtube.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://www.youtube.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://www.youtube.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://www.youtube.com/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (https://www.youtube.com/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (https://www.youtube.com/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (https://www.youtube.com/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (https://www.youtube.com/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://Automation-final-project/./cypress/e2e/e2e-final-revamp.cy.js:14:11)",
+                "diff": null
+              },
+              "uuid": "2130aa56-53d3-444b-8c69-0954cfa2c317",
+              "parentUUID": "0d834b28-7ee5-49ba-a57b-6c385d8945f6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Filter sort by price High to Low items Chair with AmazonDotCom",
+              "fullTitle": "FInal Project Filter sort by price High to Low items Chair with AmazonDotCom",
+              "timedOut": null,
+              "duration": 80307,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env('BASE_URL_AMAZON'));\ncy.wait(5000);\namazon.searchItems();\ncy.wait(5000);\namazon.sortFeatureItems();\namazon.selectItems();\namazon.assertionPage();",
+              "err": {},
+              "uuid": "974e3c45-5a1b-4b30-88d9-3b396ff6bb42",
+              "parentUUID": "0d834b28-7ee5-49ba-a57b-6c385d8945f6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Order Ticket flight with AgodaDotCom",
+              "fullTitle": "FInal Project Order Ticket flight with AgodaDotCom",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "// cy.visit(Cypress.env(`BASE_URL_AGODA`));\ncy.visit('https://www.agoda.com/id-id/');\nagoda.tablist();\nagoda.formBooking({});\nagoda.filterData();\ncy.wait(5000);\nagoda.selectFlight();\ncy.wait(2000);\nagoda.contactInformation({});\n// form passenger\nagoda.formPassenger({});\ncy.xpath(`//input[@id=\"flight.forms.i0.units.i0.passportNumber\"]`).click().type('80864446');\ncy.xpath(`//div[@data-testid=\"flight.forms.i0.units.i0.passportCountryOfIssue\"]//button`).click();\ncy.xpath(`//input[@placeholder=\"Cari\"]`).type('Indonesia');\ncy.xpath(`//ul[@role='listbox']`).click();\ncy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passportExpiryDate-DateInputDataTestId']`).type('20');\ncy.xpath(`//div[@data-testid=\"flight.forms.i0.units.i0.passportExpiryDate-MonthInputDataTestId\"]`).click();\ncy.xpath(`//div[@data-testid=\"floater-container\"]//span[contains(text(),'Januari')]`).click();\ncy.xpath(`//input[@datatestid=\"flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId\"]`).type('2026');\ncy.wait(10000);\n// lanjut add on\n// cy.get('[data-testid=\"kite-box\"] > :nth-child(1) > .a5d86-bg-product-primary').click();\ncy.xpath(`//button[@data-component=\"flight-continue-to-addOns-button\"]`).click();\ncy.wait(5000);\n// cy.xpath(`//div[@data-testid=\"add-on-radio-select-TRIP_PROTECTION\"]//div[@tabindex=\"0\"]`).click();\ncy.xpath(`//div[@data-testid=\"radio-button-option-no\"]`).click();\ncy.xpath(`//button[@data-testid=\"continue-to-payment-button\"]`).click();",
+              "err": {},
+              "uuid": "c53f7764-5bef-4b76-9dbd-213cb38ed1c9",
+              "parentUUID": "0d834b28-7ee5-49ba-a57b-6c385d8945f6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "974e3c45-5a1b-4b30-88d9-3b396ff6bb42"
+          ],
+          "failures": [
+            "2130aa56-53d3-444b-8c69-0954cfa2c317"
+          ],
+          "pending": [
+            "c53f7764-5bef-4b76-9dbd-213cb38ed1c9"
+          ],
+          "skipped": [],
+          "duration": 140843,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "cdf5a567-2b27-4288-afde-c45c68384130",
+      "title": "",
+      "fullFile": "cypress\\e2e\\e2e-final-revamp.cy.js",
+      "file": "cypress\\e2e\\e2e-final-revamp.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a7e70b17-a290-4bf4-bea0-e4d418952720",
+          "title": "FInal Project",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "youtube search",
+              "fullTitle": "FInal Project youtube search",
+              "timedOut": null,
+              "duration": 22621,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));\nyoutube.goToTrending();\nyoutube.listMenuTrendingMovies();\ncy.wait(5000);\nyoutube.goToTrendingMovies();\nyoutube.assertionPage();",
+              "err": {
+                "message": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 3 elements. Pass `{ multiple: true }` if you want to serially click each element.\n\nhttps://on.cypress.io/click",
+                "estack": "CypressError: `cy.click()` can only be called on a single element. Your subject contained 3 elements. Pass `{ multiple: true }` if you want to serially click each element.\n\nhttps://on.cypress.io/click\n    at mouseAction (https://www.youtube.com/__cypress/runner/cypress_runner.js:113607:68)\n    at Context.click (https://www.youtube.com/__cypress/runner/cypress_runner.js:113774:14)\n    at wrapped (https://www.youtube.com/__cypress/runner/cypress_runner.js:141133:19)\nFrom Your Spec Code:\n    at Object.proxyGetter [as get] (https://www.youtube.com/__cypress/runner/cypress_runner.js:79924:22)\n    at exists (https://www.youtube.com/__cypress/runner/cypress_runner.js:145988:26)\n    at elExists (https://www.youtube.com/__cypress/runner/cypress_runner.js:146003:10)\n    at ensureExistence (https://www.youtube.com/__cypress/runner/cypress_runner.js:146184:22)\n    at onFailFn (https://www.youtube.com/__cypress/runner/cypress_runner.js:146213:53)",
+                "diff": null
+              },
+              "uuid": "5f1321a2-a685-4786-b7e1-73a6e5444959",
+              "parentUUID": "a7e70b17-a290-4bf4-bea0-e4d418952720",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Filter sort by price High to Low items Chair with AmazonDotCom",
+              "fullTitle": "FInal Project Filter sort by price High to Low items Chair with AmazonDotCom",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.visit(Cypress.env('BASE_URL_AMAZON'));\ncy.wait(5000);\namazon.searchItems();\ncy.wait(5000);\namazon.sortFeatureItems();\namazon.selectItems();\namazon.assertionPage();",
+              "err": {},
+              "uuid": "288a4b2b-0694-48d4-8b45-cd87d4f0e9be",
+              "parentUUID": "a7e70b17-a290-4bf4-bea0-e4d418952720",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Order Ticket flight with AgodaDotCom",
+              "fullTitle": "FInal Project Order Ticket flight with AgodaDotCom",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "// cy.visit(Cypress.env(`BASE_URL_AGODA`));\ncy.visit('https://www.agoda.com/id-id/');\nagoda.tablist();\nagoda.formBooking({});\nagoda.filterData();\ncy.wait(5000);\nagoda.selectFlight();\ncy.wait(2000);\nagoda.contactInformation({});\n// form passenger\nagoda.formPassenger({});\ncy.xpath(`//input[@id=\"flight.forms.i0.units.i0.passportNumber\"]`).click().type('80864446');\ncy.xpath(`//div[@data-testid=\"flight.forms.i0.units.i0.passportCountryOfIssue\"]//button`).click();\ncy.xpath(`//input[@placeholder=\"Cari\"]`).type('Indonesia');\ncy.xpath(`//ul[@role='listbox']`).click();\ncy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passportExpiryDate-DateInputDataTestId']`).type('20');\ncy.xpath(`//div[@data-testid=\"flight.forms.i0.units.i0.passportExpiryDate-MonthInputDataTestId\"]`).click();\ncy.xpath(`//div[@data-testid=\"floater-container\"]//span[contains(text(),'Januari')]`).click();\ncy.xpath(`//input[@datatestid=\"flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId\"]`).type('2026');\ncy.wait(10000);\n// lanjut add on\n// cy.get('[data-testid=\"kite-box\"] > :nth-child(1) > .a5d86-bg-product-primary').click();\ncy.xpath(`//button[@data-component=\"flight-continue-to-addOns-button\"]`).click();\ncy.wait(5000);\n// cy.xpath(`//div[@data-testid=\"add-on-radio-select-TRIP_PROTECTION\"]//div[@tabindex=\"0\"]`).click();\ncy.xpath(`//div[@data-testid=\"radio-button-option-no\"]`).click();\ncy.xpath(`//button[@data-testid=\"continue-to-payment-button\"]`).click();",
+              "err": {},
+              "uuid": "bb3a6f65-676e-4368-b9c3-88f1b59ab5e0",
+              "parentUUID": "a7e70b17-a290-4bf4-bea0-e4d418952720",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "5f1321a2-a685-4786-b7e1-73a6e5444959"
+          ],
+          "pending": [
+            "288a4b2b-0694-48d4-8b45-cd87d4f0e9be",
+            "bb3a6f65-676e-4368-b9c3-88f1b59ab5e0"
+          ],
+          "skipped": [],
+          "duration": 22621,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "3891c77c-6c60-4568-80cc-9ed554edf238",
+      "title": "",
+      "fullFile": "cypress\\e2e\\e2e-final-revamp.cy.js",
+      "file": "cypress\\e2e\\e2e-final-revamp.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fa564208-4786-49a3-81aa-f2da3fc1d928",
+          "title": "FInal Project",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "youtube search Trending",
+              "fullTitle": "FInal Project youtube search Trending",
+              "timedOut": null,
+              "duration": 24946,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));\nyoutube.goToTrending();\nyoutube.listMenuTrendingMovies();\n// cy.wait(5000);\nyoutube.goToTrendingMovies();\nyoutube.assertionPage();",
+              "err": {},
+              "uuid": "d7b68f09-e26c-4a9d-9870-6a625c8c39d5",
+              "parentUUID": "fa564208-4786-49a3-81aa-f2da3fc1d928",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Filter sort by price High to Low items Chair with AmazonDotCom",
+              "fullTitle": "FInal Project Filter sort by price High to Low items Chair with AmazonDotCom",
+              "timedOut": null,
+              "duration": 32578,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env('BASE_URL_AMAZON'));\n// cy.wait(5000);\namazon.searchItems();\n// cy.wait(5000);\namazon.sortFeatureItems();\namazon.selectItems();\namazon.assertionPage();",
+              "err": {},
+              "uuid": "999817d1-85ea-453c-90a7-5639cac79411",
+              "parentUUID": "fa564208-4786-49a3-81aa-f2da3fc1d928",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Order Ticket flight with AgodaDotCom",
+              "fullTitle": "FInal Project Order Ticket flight with AgodaDotCom",
+              "timedOut": null,
+              "duration": 122761,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// cy.visit('https://www.agoda.com/id-id/');\ncy.visit(Cypress.env('BASE_URL_AGODA'));\nagoda.tablist();\nagoda.formBooking({});\nagoda.filterData();\n// cy.wait(5000);\nagoda.selectFlight();\n// cy.wait(2000);        \nagoda.contactInformation({});\n// form passenger\nagoda.formPassenger({});\ncy.get(\"body\").then($body => {\n  if ($body.find('input[data-testid=\"flight.forms.i0.units.i0.passportNumber\"]').length > 0) {\n    agoda.formPassport({});\n  } else {\n    cy.log('Skip aja form passport');\n  }\n});\n// cy.wait(10000);\n// lanjut add on\nagoda.addOn();\n// cek dulu apa ada element pop up\ncy.get('body').then($body => {\n  const xpath = \"//button[@aria-label='close']\";\n  const result = document.evaluate(xpath, $body[0], null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);\n  const closeBtn = result.singleNodeValue;\n  if (closeBtn) {\n    cy.wrap(closeBtn).click(); // klik kalau ada\n  } else {\n    cy.log('Tidak ada tombol close, lanjutkan saja');\n  }\n});\ncy.wait(10000);\nagoda.pagePaymentAssertion();",
+              "err": {},
+              "uuid": "52955589-486e-4a82-b60a-f83d80ab7616",
+              "parentUUID": "fa564208-4786-49a3-81aa-f2da3fc1d928",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d7b68f09-e26c-4a9d-9870-6a625c8c39d5",
+            "999817d1-85ea-453c-90a7-5639cac79411",
+            "52955589-486e-4a82-b60a-f83d80ab7616"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 180285,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

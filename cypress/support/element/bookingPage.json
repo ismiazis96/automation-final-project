@@ -9,7 +9,7 @@
         "to"        : "//input[@id='flight-destination-search-input']",
         "selectTo"  :"//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]",
         "date"      :"//div[@class='PriceSurgePicker-Day PriceSurgePicker-Day__Wide today']/following-sibling::div[1]",
-        "dateWeekend": "//div[@class='PriceSurgePicker-Day PriceSurgePicker-Day__Wide weekends today']/following-sibling::div[1]",
+        "dateWeekend": "//div[@class='PriceSurgePicker-Day PriceSurgePicker-Day__Wide weekends today']",
         "buttonSearch":"//button[@data-selenium='searchButton']"
     },
 
