@@ -79,7 +79,9 @@ This section outlines the key scenarios that are being automated. Each scenario 
 Cypress automatically captures screenshots and videos for failing tests.\
 Check the `cypress/screenshots/` and `cypress/videos/` folders after running tests.
 
----
+## 🔍 Preview Run Test With Reporting mochawesome
+
+https://htmlpreview.github.io/?https://github.com/ismiazis96/automation-final-project/blob/main/cypress/reports/mochawesome.html
 
 ## ✍️ Author
 
